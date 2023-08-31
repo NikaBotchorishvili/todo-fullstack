@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import TaskList from "./components/TaskList";
+import Navbar from "./views/Navbar";
+import Login from "./views/Login";
+import Register from "./views/Register";
+import TaskList from "./views/TaskList";
 
 function App() {
 	const router = createBrowserRouter([
