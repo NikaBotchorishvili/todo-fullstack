@@ -24,6 +24,10 @@ export default {
 			darkGrayishBlue: "hsl(234, 11%, 52%)",
 			darkLighterVeryDarkGrayishBlue: "hsl(233, 14%, 35%)",
 			darkVeryDarkGrayishBlue: "hsl(237, 14%, 26%)",
+
+			cyan: "#3A7CFD",
+			blue: "#55DDFF",
+			violet: "#C058F3",
 		},
 		fontFamily: {
 			josefinSans: "'Josefin Sans', sans-serif",
