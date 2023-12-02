@@ -1,13 +1,12 @@
-import { UseFormRegisterReturn, FieldError  } from 'react-hook-form'
+import { UseFormRegisterReturn, FieldError } from "react-hook-form";
 
 type InputProps = {
-    type: string;
-    placeholder: string
-    register: UseFormRegisterReturn,
-	error: FieldError | undefined
-}
-function Input({type, placeholder, register, error}: InputProps) {
-
+	type: string;
+	placeholder: string;
+	register: UseFormRegisterReturn;
+	error: FieldError | undefined;
+};
+function Input({ type, placeholder, register, error }: InputProps) {
 	return (
 		<div className="flex flex-col items-start gap-y-2">
 			<input
@@ -17,7 +16,6 @@ function Input({type, placeholder, register, error}: InputProps) {
 				{...register}
 			/>
 			<small className="text-[#cc0000] text-md">{error?.message}</small>
-			
 		</div>
 	);
 }

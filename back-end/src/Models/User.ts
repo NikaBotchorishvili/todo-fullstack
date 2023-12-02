@@ -8,22 +8,25 @@ type User = {
 	refreshToken?: string;
 };
 
-const userSchema = new Schema<User>({
-	username: {
-		trim: true,
-		type: String,
-		required: true,
-		minlength: [8, "Minimum 8 letters required"],
+const userSchema = new Schema<User>(
+	{
+		username: {
+			trim: true,
+			type: String,
+			required: true,
+			minlength: [8, "Minimum 8 letters required"],
+		},
+		email: {
+			trim: true,
+			type: String,
+			required: true,
+			validate: [validateEmail, "Invalid email format"],
+		},
+		password: { trim: true, type: String, required: true },
+		refreshToken: { type: String },
 	},
-	email: {
-		trim: true,
-		type: String,
-		required: true,
-		validate: [validateEmail, "Invalid email format"],
-	},
-	password: { trim: true, type: String, required: true },
-	refreshToken: { type: String },
-});
+	{ timestamps: true }
+);
 
 userSchema.pre("save", async function (next) {
 	const user = this;

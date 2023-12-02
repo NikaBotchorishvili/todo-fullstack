@@ -27,7 +27,8 @@ export async function login(req: Request, res: Response) {
 				foundUser.refreshToken = refreshToken;
 				foundUser.save();
 				res.cookie('jwt', refreshToken, { maxAge: 60 * 1000 * 15, httpOnly: true, sameSite: "none", secure: true })
-				return res.json({ accessToken });
+				
+				return res.json({ user: foundUser._id, accessToken});
 			}
 			return res.sendStatus(401);
 		}

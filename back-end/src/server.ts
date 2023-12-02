@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
-app.use("/", AuthRouter);
+app.use("/auth/", AuthRouter);
 app.use("/todo/", TodoRouter);
 app.get("/", (req: Request, res: Response) => {
 	return res.send("<h1>Initialization</h1>");

@@ -5,10 +5,10 @@ import Main from "../../components/TaskList/Main";
 function TaskList() {
 	return (
 		<Top>
-            <main className="w-screen flex flex-col gap-y-5	 items-center ">
-                <AddForm />
+			<main className="w-screen flex flex-col gap-y-5	 items-center ">
+				<AddForm />
 				<Main />
-            </main>
+			</main>
 		</Top>
 	);
 }
