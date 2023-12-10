@@ -42,7 +42,7 @@ function LoginForm() {
 		} catch (err: any) {
 			if (!err.originalStatus) {
 				setError("root", { message: "No server response" });
-			} else if ((err.originalStatus == 401)) {
+			} else if (err.originalStatus == 401) {
 				setError("root", { message: "Unauthorized" });
 			} else {
 				setError("root", { message: "Login Failed" });
@@ -83,7 +83,11 @@ function LoginForm() {
 				})}
 				error={errors.password}
 			/>
-			{errors.root && <small className="text-[#cc0000] text-md">{errors.root.message}</small>}
+			{errors.root && (
+				<small className="text-[#cc0000] text-md">
+					{errors.root.message}
+				</small>
+			)}
 			<button className="w-full text-2xl py-2 bg-cyan dark:text-veryLightGray">
 				Submit
 			</button>

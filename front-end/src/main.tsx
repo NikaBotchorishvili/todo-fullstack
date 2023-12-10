@@ -9,6 +9,7 @@ import TaskList from "./views/TaskList";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import RequireAuth from "./components/RequireAuth";
+import Profile from "./views/Profile";
 
 const router = createBrowserRouter([
 	{
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
 			{
 				path: "/Register",
 				element: <Register />,
+			},
+			{
+				path: "/profile",
+				element: (
+					<RequireAuth>
+						<Profile />
+					</RequireAuth>
+				),
 			},
 		],
 	},

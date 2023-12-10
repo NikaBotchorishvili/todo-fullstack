@@ -1,14 +1,14 @@
 import { CallbackError, model, Schema } from "mongoose";
 import { validateEmail } from "../libs/validation";
 import bcrypt from "bcrypt";
-type User = {
+export type UserType = {
 	username: string;
 	email: string;
 	password: string;
 	refreshToken?: string;
 };
 
-const userSchema = new Schema<User>(
+export const userSchema = new Schema<UserType>(
 	{
 		username: {
 			trim: true,

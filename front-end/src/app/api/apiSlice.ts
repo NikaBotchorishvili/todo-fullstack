@@ -8,7 +8,7 @@ import {
 import { setCredentials, logOut } from "../../features/Auth/AuthSlice";
 import { RootState } from "../store";
 const baseQuery = fetchBaseQuery({
-	baseUrl: `${import.meta.env.VITE_API_URL}/auth`,
+	baseUrl: `${import.meta.env.VITE_API_URL}`,
 	credentials: "include",
 	prepareHeaders: (headers, { getState }) => {
 		const accessToken = (getState() as RootState).auth.accessToken;
@@ -50,5 +50,6 @@ const baseQueryWithReAuth: BaseQueryFn<
 
 export const apiSlice = createApi({
     baseQuery: baseQueryWithReAuth,
+	tagTypes: ["Todos", "Profile"],
     endpoints: builder => ({})
 })
