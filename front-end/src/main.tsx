@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Navbar from "./views/Navbar";
+import Navbar from "./views/common/Navbar";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import TaskList from "./views/TaskList";
