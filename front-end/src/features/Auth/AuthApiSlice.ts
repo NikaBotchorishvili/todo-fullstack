@@ -16,7 +16,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 				body: { ...credentials },
 			}),
 		}),
-		register: builder.mutation<void, UserFormData>({
+		register: builder.mutation<any, UserFormData>({
 			query: ({ username, email, password }) => ({
 				url: "auth/register",
 				method: "POST",

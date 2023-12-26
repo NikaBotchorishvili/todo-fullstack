@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import User from "../../Models/User";
+import jwt from "jsonwebtoken";
 
 export async function register(req: Request, res: Response) {
 	const { username, email, password } = req.body;
@@ -20,8 +21,12 @@ export async function register(req: Request, res: Response) {
 		const user = new User({ username, email, password });
 
 		await user.save();
-
-		return res.sendStatus(201);
+		const accessToken = jwt.sign(
+			{ username: user.username },
+			process.env.ACCESS_TOKEN_SECRET!,
+			{ expiresIn: "10s" }
+		);
+		return res.json({ user: user._id, accessToken });
 	} catch (err) {
 		return res.status(500).json({ error: err });
 	}
