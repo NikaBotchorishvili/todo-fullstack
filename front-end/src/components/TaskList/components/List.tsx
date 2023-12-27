@@ -4,6 +4,7 @@ import { useGetTodosByUserQuery } from "../../../features/Todo/TodoSlice";
 import ListItem from "./ListItem";
 import UseQueryParams from "../../../libs/UseQueryParams";
 import { useLocation } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
 function List() {
 	const user = useAppSelector(SelectCurrentUser) as string;
@@ -25,7 +26,7 @@ function List() {
 			);
 		});
 	} else if (isLoading) {
-		content = <h1>Loading...</h1>;
+		content = <ClipLoader className="mx-auto" color="#fff" />;
 	} else if (isError) {
 			
 		content = <i>Error: {status}</i>;

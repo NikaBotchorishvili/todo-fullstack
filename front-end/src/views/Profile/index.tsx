@@ -1,5 +1,5 @@
 import Top from "../../components/Common/Top";
-import ProfileForm from "../../components/Profile/ProfileForm";
+import ProfileForm from "../../components/Profile/Profile";
 
 const Profile = () => {
 	return (

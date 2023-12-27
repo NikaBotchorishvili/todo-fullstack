@@ -1,36 +1,32 @@
-import { useForm } from "react-hook-form";
 import Input from "../Common/Input";
-import {
-	useGetUserProfileQuery,
-	usePatchUserProfileMutation,
-} from "../../features/Profile/ProfileSlice";
-import { SelectCurrentUser } from "../../features/Auth/AuthSlice";
+import { Profile, usePatchUserProfileMutation } from "../../features/Profile/ProfileSlice";
+import { useForm } from "react-hook-form";
 import { useAppSelector } from "../../app/hooks";
-import { Profile } from "../../features/Profile/ProfileSlice";
 interface FormData extends Omit<Profile, "updatedAt" | "password"> {
 	newPassword: string;
 	repeatNewPassword: string;
 }
 
-Input;
-const ProfileForm = () => {
-	const user = useAppSelector(SelectCurrentUser) as string;
-	const [updateProfile] = usePatchUserProfileMutation();
-	const { data, isLoading, isSuccess } = useGetUserProfileQuery({
-		userId: user,
-	});
+type Props = {
+    username: string;
+    email: string;
+    user: string;
+}
 
-	const {
+const Form: React.FC<Props> = ({ username, email, user }) => {
+	const [updateProfile] = usePatchUserProfileMutation();
+    
+    const {
 		register,
 		formState: { errors },
 		handleSubmit,
 		setError,
 		getValues,
-	} = useForm<typeof data extends Profile ? typeof data : FormData>({
-		defaultValues: { ...data, newPassword: "", repeatNewPassword: "" },
+	} = useForm<FormData>({
+		defaultValues: { username: username, email: email, newPassword: "", repeatNewPassword: "" },
 	});
 
-	const onSubmit = handleSubmit(async (data) => {
+    const onSubmit = handleSubmit(async (data) => {
 		try {
 			const { email, newPassword, username } = data;
 
@@ -47,17 +43,11 @@ const ProfileForm = () => {
 				setError("root", { message: "No server response" });
 			} else if (err.originalStatus == 401) {
 				setError("root", { message: "Unauthorized" });
-			} else {
-				setError("root", { message: "Login Failed" });
 			}
 		}
 	});
-	let content;
-	if (isLoading) {
-		content = <h1>Loading</h1>;
-	} else if (isSuccess) {
-		content = (
-			<form
+    return (
+        <form
 				onSubmit={onSubmit}
 				className=" w-[80%] sm:w-[70%] md:w-[30%] flex flex-col gap-y-5 "
 			>
@@ -111,9 +101,7 @@ const ProfileForm = () => {
 					Update
 				</button>
 			</form>
-		);
-	}
-	return <>{content}</>;
-};
-
-export default ProfileForm;
+    );
+}
+ 
+export default Form;

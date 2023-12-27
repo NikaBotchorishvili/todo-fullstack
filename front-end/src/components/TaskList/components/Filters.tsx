@@ -6,7 +6,6 @@ import UseQueryParams from "../../../libs/UseQueryParams";
 
 function Filters() {
 	const user = useAppSelector(SelectCurrentUser) as string;
-	console.log(user);
 	const params = UseQueryParams();
 	const [deleteCompleted] = useDeleteCompletedMutation();
 	return (
