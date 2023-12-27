@@ -34,7 +34,7 @@ function List() {
 	return (
 		<ul
 			key={useLocation().pathname}
-			className="w-full [&>*:first-child]:rounded-t-md "
+			className="w-full flex flex-col items-center  mx-auto [&>*:first-child]:rounded-t-md "
 		>
 			{content}
 		</ul>

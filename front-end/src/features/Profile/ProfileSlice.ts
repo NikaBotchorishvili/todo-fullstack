@@ -5,6 +5,7 @@ export interface Profile {
 	email: string;
 	password: string;
 	updatedAt: string;
+	createdAt: string
 }
 
 export const ProfileSlice = apiSlice.injectEndpoints({

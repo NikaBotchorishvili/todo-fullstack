@@ -10,7 +10,7 @@ function Input({ type, placeholder, register, error }: InputProps) {
 	return (
 		<div className="flex flex-col items-start gap-y-2">
 			<input
-				className="w-full py-3 px-6 dark:bg-darkVeryDarkDesaturatedBlue dark:text-veryLightGray"
+				className="w-full py-3 px-6 rounded-md border border-darkGrayishBlue  dark:border-none dark:bg-darkVeryDarkDesaturatedBlue dark:text-veryLightGray"
 				type={type}
 				placeholder={placeholder}
 				{...register}
