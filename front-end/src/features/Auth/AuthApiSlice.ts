@@ -1,12 +1,15 @@
 import { apiSlice } from "../../app/api/apiSlice";
-
 type UserFormData = {
 	username: string;
 	email: string;
 	password: string;
 };
 
+
+
+
 export const authApiSlice = apiSlice.injectEndpoints({
+
 	endpoints: (builder) => ({
 		login: builder.mutation({
 			query: (credentials) => ({

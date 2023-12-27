@@ -27,6 +27,7 @@ function List() {
 	} else if (isLoading) {
 		content = <h1>Loading...</h1>;
 	} else if (isError) {
+			
 		content = <i>Error: {status}</i>;
 	}
 	return (
