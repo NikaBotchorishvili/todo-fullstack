@@ -1,10 +1,22 @@
 import { Request, Response } from "express";
 import User from "../../Models/User";
 import jwt from "jsonwebtoken";
+import { sendVerificationEmail } from "../../libs/sendVerificationEmail";
 
 export async function register(req: Request, res: Response) {
-	const { username, email, password } = req.body;
-	if (!username || !email || !password)
+	let { username, email, password } = req.body;
+
+	username = username.trim();
+	email = email.trim();
+	password = password.trim();
+	if (
+		!username ||
+		!email ||
+		!password ||
+		username == "" ||
+		email == "" ||
+		password == ""
+	)
 		return res.status(400).json({
 			Message: "Username, email and password field are all required",
 		});
@@ -18,9 +30,11 @@ export async function register(req: Request, res: Response) {
 		return res.status(409).json({ message: "duplicate email" });
 
 	try {
-		const user = new User({ username, email, password });
+		const user = new User({ username, email, password, verified: false });
 
-		await user.save();
+		await user.save().then((result) => {
+			sendVerificationEmail(result, res);
+		});
 		const accessToken = jwt.sign(
 			{ username: user.username },
 			process.env.ACCESS_TOKEN_SECRET!,

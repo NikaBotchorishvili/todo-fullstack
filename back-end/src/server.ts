@@ -9,8 +9,9 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import AuthRouter from "./Routes/Auth";
 import TodoRouter from "./Routes/Todo";
-import ProfileRouter from "./Routes/Profile"
+import ProfileRouter from "./Routes/Profile";
 import cookieParser from "cookie-parser";
+
 
 const app = express();
 const PORT = process.env.PORT;
